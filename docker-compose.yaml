@@ -1,0 +1,10 @@
+services:
+  node-js:
+    build: .
+    networks:
+      - express_vue
+    ports:
+      - "3000:3000"      
+networks: 
+  express_vue:
+    name: express_vue
