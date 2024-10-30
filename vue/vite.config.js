@@ -6,7 +6,6 @@ import serveStatic from 'serve-static'
 
 const VUE_PORT = process.env.VUE_PORT || 3000;
 const BACKEND_PORT = process.env.BACKEND_PORT || 8080;
-const WS_PORT = process.env.WS_PORT || 8765;
 
 export default defineConfig({
   server: {
@@ -18,9 +17,9 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/api/, ''),
       }
     },
-    middleware: [
-      serveStatic(path.resolve(__dirname, 'public'))
-    ]
+    configureServer: ({ middlewares }) => {
+      middlewares.use(serveStatic(path.resolve(__dirname, 'public')));
+    }
   },
   plugins: [
     vue(),
