@@ -14,7 +14,7 @@ const router = createRouter({
         },
         {
             path: '/loop/', 
-            name: "Videoafspiller",
+            name: "VideoafspillerLoop",
             component: VideoPlayer,
             props: route => ({ video: route.query.video, loop: true })
         }
